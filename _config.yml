@@ -10,7 +10,7 @@ markdown: kramdown
 highliter: redcarpet
 permalink: /:title/
 # Directory settings
-exclude: [Gemfile, Gemfile.lock, .gitignore, node_modules, package.json, gulpfile.js, assets/css/sass/, CNAME, Rakefile, LICENSE, README.md]
+exclude: [Gemfile, Gemfile.lock, .gitignore, node_modules, package.json, gulpfile.js, assets/css/sass/, Rakefile, LICENSE, README.md]
 
 #Gems
 gems: [jekyll-paginate, jekyll-sitemap]
