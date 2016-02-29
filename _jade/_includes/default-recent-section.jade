@@ -1,0 +1,12 @@
+section
+  h3 Recent posts
+  section.row
+    | {% for post in site.posts offset: 0 limit: 6  %}
+    article.col-md-offset-2.col-md-4
+      a(href="{{site.url}}{{site.baseurl}}{{ post.url }}")
+        img(src="/assets/img/{{ post.url | remove:'/' }}.jpg", alt="{{ post.url | remove_first:'/' }}")
+        h5 {{ post.date | date: "%d %b %Y" }}
+        | {% if page.article-section %}
+        p {{ post.content | truncatewords:25 | strip_html }}
+        | {% endif %}
+    | {% endfor %}

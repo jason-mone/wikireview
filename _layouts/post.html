@@ -1,0 +1,21 @@
+---
+layout: compress
+---
+ <!DOCTYPE html><html>{% include default-head.html %}<body class="posts"> <input type="checkbox" id="trigger"><div class="wrap">{% include posts-nav.html %}
+{% include sidebar.html %}<main><div class="container"><div class="row"><div class="col-md-offset-3 col-md-6">{% assign post-id = site.data.posts[page.post-id] %}
+{% if post-id.share-section %}
+{% include posts-share-section.html %}
+{% endif %}
+{% if post-id.video-section %}
+{% include posts-video-section.html %}
+{% endif %}
+{% if post-id.link-section %}
+{% include posts-link-section.html %}
+{% endif %}
+{% if post-id.article-section %}<section class="article-section"><article>{{content}}</article></section>{% endif %}
+{% if post-id.tag-section %}
+{% include posts-tag-section.html %} 
+{% endif %}
+{% if post-id.comment-section %}
+{% include posts-comment-section.html %} 
+{% endif %}</div></div></div></main>{% include posts-footer.html %}</div>{% include posts-scripts.html %}</body></html>

@@ -1,0 +1,5 @@
+<section><div class="content">{% for post in paginator.posts %}<a href="{{site.url}}{{site.baseurl}}{{ post.url }}"><div><div><img src="/assets/img/{{ post.url | remove:'/' }}.jpg" alt="{{ post.url | remove_first:'/' }}"/><h4>{{ post.title }}</h4><h5>{{ post.date | date: "%d %b %Y" }}</h5>{% if page.article-section %}<p>{{ post.content | truncatewords:25 | strip_html }}</p>{% endif %}</div></div>{% endfor %}
+{% if paginator.total_pages &#62; 1 %}<div class="pagination">{% if paginator.previous_page %}
+{% if paginator.page == 2 %}<a href="{{ site.siteurl }}/">&#171; Prev</a>{% else %}<a href="{{ site.siteurl }}/page{{ paginator.previous_page }}/">&#171; Prev</a>{% endif %}
+{% else %}<span>&#171; Prev</span>{% endif %}
+{% if paginator.next_page %}<a href="{{ site.siteurl }}/page{{ paginator.next_page }}/" class="next">Next &#187;</a>{% else %}<span class="next">Next &#187;</span>{% endif %}</div>{% endif %}</a></div></section>

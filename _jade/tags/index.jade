@@ -1,0 +1,40 @@
+| ---
+| layout: tags
+| title: Tags
+| changefreq: weekly
+| priority: 0.8
+| ---
+| {% include search-input.html %}
+| {% include search-result.html %}
+| {% assign tags_max = 0 %}
+| {% for tag in site.tags %}
+| {% if tag[1].size > tags_max %}
+| {% assign tags_max = tag[1].size %}
+| {% endif %}
+| {% endfor %}
+| {% for i in (1..tags_max) reversed %}
+| {% for tag in site.tags %}
+| {% if tag[1].size == i %}
+.tag(id="{{ tag.tags[0] | downcase | replace:' ','_' }}")
+  h2
+    | {{ tag[0] }} 
+    span.badge {{ i }}
+  .columns
+    ul.fa-ul
+      | {% for post in tag.last %}
+      li
+        a(href="{{ post.url }}")
+          i.fa.fa-angle-right.fa-li
+          | {{ post.title }}
+      | {% endfor %}
+| {% endif %} {% endfor %} {% endfor %}
+hr
+.tags-columns
+  ul.fa-ul
+    | {% assign tags_max = 0 %} {% for tag in site.tags %} {% if tag[1].size > tags_max %} {% assign tags_max = tag[1].size %} {% endif %} {% endfor %} {% for i in (1..tags_max) reversed %} {% for tag in site.tags %} {% if tag[1].size == i %}
+    .col-md-6
+      li
+        a(href="{{site.url}}/#{{ tags[0] | downcase | replace:' ','_' }}", title='{{ i }} posts')
+          i.fa.fa-tag.fa-li
+          | {{ tag[0] }}
+    | {% endif %} {% endfor %} {% endfor %}

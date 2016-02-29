@@ -1,0 +1,31 @@
+nav
+  .container
+    .row
+      .col-md-3.visible-md-block.visible-lg-block
+        .arrow-flex
+            label.left-burger(for="trigger")
+              .burger
+                span.slice
+                span.slice
+                span.slice
+            a.inner(href="{{site.url}}{{site.baseurl}}/")
+              h1 wikiReview
+      .col-md-6.col-sm-11.col-xs-10.arrow
+        | {% if page.previous.url %}
+        a.arrow.left(href="{{ page.previous.url }}")
+          svg(viewbox="0 0 81 139")
+            path(fill="#fff", d="M58.91 3.83C63.93-1.29 72.06-1.29 77.16 3.92 82.23 9.1 82.2 17.52 77.25 22.58 77.25 22.58 31.32 69.52 31.32 69.52 31.32 69.52 77.25 116.46 77.25 116.46 82.27 121.59 82.26 129.91 77.16 135.12 72.1 140.29 63.86 140.26 58.91 135.21 58.91 135.21 3.81 78.89 3.81 78.89 -1.25 73.72-1.29 65.36 3.81 60.15 3.81 60.15 58.91 3.83 58.91 3.83 58.91 3.83 58.91 3.83 58.91 3.83")
+          span {{page.previous.title}}
+        | {%endif%}
+        | {% if page.next.url %}
+        a.arrow.right(href="{{ page.next.url }}")
+          svg(viewbox="0 0 81 139")
+            path(fill="#fff", d="M58.91 3.83C63.93-1.29 72.06-1.29 77.16 3.92 82.23 9.1 82.2 17.52 77.25 22.58 77.25 22.58 31.32 69.52 31.32 69.52 31.32 69.52 77.25 116.46 77.25 116.46 82.27 121.59 82.26 129.91 77.16 135.12 72.1 140.29 63.86 140.26 58.91 135.21 58.91 135.21 3.81 78.89 3.81 78.89 -1.25 73.72-1.29 65.36 3.81 60.15 3.81 60.15 58.91 3.83 58.91 3.83 58.91 3.83 58.91 3.83 58.91 3.83")
+          span {{page.next.title}}
+        | {%endif%}
+      .col-sm-1.col-xs-2.visible-sm-block.visible-xs-block.burger-flex
+        label.right-burger(for="trigger")
+          .burger
+            span.slice
+            span.slice
+            span.slice
