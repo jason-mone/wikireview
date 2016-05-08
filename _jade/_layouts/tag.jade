@@ -1,0 +1,15 @@
+| ---
+| layout: compress
+| ---
+| 
+doctype html
+html(lang="en") {% include default-head.html %}
+	body(unresolved="", class="tag")
+		input(type="checkbox", id="trigger")
+		paper-header-panel(mode="waterfall-tall")
+			paper-toolbar(class="tall")
+				| {% include default-nav.html %}
+			| {% include sidebar.html %}
+			main
+				.row
+					| {{content}}

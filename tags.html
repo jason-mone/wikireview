@@ -1,0 +1,17 @@
+---
+layout: tags
+title: Tags
+changefreq: weekly
+priority: 0.8
+---
+ 
+{% include search-input.html %}
+{% include search-result.html %}<div class="tags-columns"><ul>{% assign tags_max = 0 %} {% for tag in site.tags %} {% if tag[1].size > tags_max %} {% assign tags_max = tag[1].size %} {% endif %} {% endfor %} {% for i in (1..tags_max) reversed %} {% for tag in site.tags %} {% if tag[1].size == i %}<div class="small-6 medium-3 columns"><li><a href="/tag/{{ tag[0] | downcase | replace:' ','_' }}" title="{{ i }} posts"><iron-icon icon="icons:loyalty"></iron-icon>{{ tag[0] }}</a></li></div>{% endif %} {% endfor %} {% endfor %}</ul></div><hr/><div class="row">{% assign tags_max = 0 %}
+{% for tag in site.tags %}
+{% if tag[1].size > tags_max %}
+{% assign tags_max = tag[1].size %}
+{% endif %}
+{% endfor %}
+{% for i in (1..tags_max) reversed %}
+{% for tag in site.tags %}
+{% if tag[1].size == i %}<div name="{{ tag[0]  | downcase | remove: '/' }}" class="label small-12 columns"><h2>{{ tag[0] }} <iron-icon icon="icons:turned-in"></iron-icon><span>{{ i }}</span></h2><ul>{% for post in tag.last %}<li class="small-6 columns"><a href="{{ post.url }}">{{ post.title }}</a>{% endfor %}</li></ul></div>{% endif %} {% endfor %} {% endfor %}</div>

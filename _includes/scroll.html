@@ -1,0 +1,1 @@
+{% for post in paginator.posts offset: 6 %}<a href="{{site.url}}{{site.baseurl}}{{ post.url }}"><paper-card image="/assets/img/{{ post.url | remove:'.html' }}.jpg"><h4>{{ post.title }}</h4><h5>{{ post.date | date: "%d %b %Y" }}</h5>{% if page.article-section %}<p>{{ post.content | truncatewords:25 | strip_html }}</p></paper-card>{% endif %}</a>{% endfor %}

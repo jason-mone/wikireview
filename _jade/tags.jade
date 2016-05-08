@@ -1,0 +1,40 @@
+| ---
+| layout: tags
+| title: Tags
+| changefreq: weekly
+| priority: 0.8
+| ---
+| 
+| {% include search-input.html %}
+| {% include search-result.html %}
+.tags-columns
+	ul
+		| {% assign tags_max = 0 %} {% for tag in site.tags %} {% if tag[1].size > tags_max %} {% assign tags_max = tag[1].size %} {% endif %} {% endfor %} {% for i in (1..tags_max) reversed %} {% for tag in site.tags %} {% if tag[1].size == i %}
+		.small-6.medium-3.columns
+			li
+				a(href="/tag/{{ tag[0] | downcase | replace:' ','_' }}", title='{{ i }} posts')
+					iron-icon(icon="icons:loyalty")
+					| {{ tag[0] }}
+		| {% endif %} {% endfor %} {% endfor %}
+hr
+.row
+	| {% assign tags_max = 0 %}
+	| {% for tag in site.tags %}
+	| {% if tag[1].size > tags_max %}
+	| {% assign tags_max = tag[1].size %}
+	| {% endif %}
+	| {% endfor %}
+	| {% for i in (1..tags_max) reversed %}
+	| {% for tag in site.tags %}
+	| {% if tag[1].size == i %}
+	.label(name="{{ tag[0]  | downcase | remove: '/' }}").small-12.columns
+		h2 {{ tag[0] }} 
+			iron-icon(icon="icons:turned-in")
+			span {{ i }}
+		ul
+			| {% for post in tag.last %}
+			li.small-6.columns
+				a(href="{{ post.url }}")
+					| {{ post.title }}
+				| {% endfor %}
+	| {% endif %} {% endfor %} {% endfor %}

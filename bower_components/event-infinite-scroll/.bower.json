@@ -1,0 +1,45 @@
+{
+  "name": "event-infinite-scroll",
+  "version": "1.1.1",
+  "authors": [
+    "chadliu23 <chadliu23@gmail.com>",
+    "Andrea Sonny <andreasonny83@gmail.com>"
+  ],
+  "description": "Infinite scroll. when reach bottom or top it will raise event",
+  "keywords": [
+    "Polymer",
+    "infinite",
+    "scroll",
+    "web-components"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/chadliu23/infinite-scroll",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chadliu23/event-infinite-scroll.git"
+  },
+  "dependencies": {
+    "polymer": "#^1.0.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "web-component-tester": "*"
+  },
+  "_release": "1.1.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.1.1",
+    "commit": "9d2cac0914065c5082b41bc66e067a47159587cf"
+  },
+  "_source": "https://github.com/chadliu23/event-infinite-scroll.git",
+  "_target": "^1.1.1",
+  "_originalSource": "event-infinite-scroll",
+  "_direct": true
+}

@@ -1,155 +1,137 @@
-.leftbar
-  display: block
-.rightbar
-  display: none
-.default, .tags, .search, .posts, .notfound
-  #trigger
-    display: none
-    &:checked + .wrap
-      overflow-x: hidden
-      nav, main, footer, header, .leftbar
-        transform: translateX(150px)
-  .wrap, main, footer, nav, header, .sidebar
-    +transition()
-  .sidebar
-    width: 150px
-    background: #39424d url(../img/pattern00.png)
-    ul
-      list-style-type: none
-      padding: 0
-      li
-      list-style-type: none
-      padding: 0
-      &:first-child
-        margin-top: -8px
-      a
-        color: #fff
-        font-size: 22px
-        display: block
-        padding-left: 20px
-        &:hover
-          text-decoration: none
-          color: #49ace5
-        h1
-          font-size: 22px
-          align-items: center
-          +transition()
-          color: rgba(255, 255, 255, .95)
-          &:hover
-            color: #49ace5
-  .leftbar
-    +position(fixed, 0 null 0 -150px)
-  nav
-    height: 50px
-    width: 100%
-    +position(fixed, 0 null null null)
-    z-index: 9999
-    background: url(../img/pattern00.png), linear-gradient(to bottom, $primary-linear-color 0%, $secondary-linear-color 100%) no-repeat
-    box-shadow: 0 0 20px rgba(0, 0, 0, .5)
-    .arrow-flex, .burger-flex, .right-burger, .slice, .left-burger
-      display: flex
-      height: 50px
-    .right-burger, .left-burger
-      flex-direction: row
-      align-items: center
-      height: 50px
-      .burger
-        height: 22px
-        min-width: 25px
-        opacity: .85
-        +transition()
-        cursor: pointer
-        &:hover
-          +transition()
-          opacity: 1
-      .slice
-        width: 90%
-        height: 3px
-        margin: 0 0 4px
-        background: #fff
-    .inner
-      display: flex
-      flex: 1
-      color: #fff
-      height: 50px
-      overflow: hidden
-      justify-content: flex-start
-      text-decoration: none
-      h1
-        transform: translateY(-9px) translateX(8px)
-        +transition()
-        color: rgba(255, 255, 255, 0.85)
-        font-size: 22px
-        align-items: center
-        &:hover
-          color: rgba(255, 255, 255, 1)
-.posts
-  nav
-    background: url(../img/pattern00.png), linear-gradient(to bottom, #52b6e9 0%, #4596e1 100%) no-repeat
-    .right span
-      transform: translateX(500px)
-    .left span
-      transform: translateX(-500px)
-    .arrow
-      display: flex
-      flex: 1
-      align-items: center
-      color: #fff
-      height: 50px
-      overflow: hidden
-      span
-        +transition()
-        font-size: 15px
-        opacity: 0
-      svg
-        width: 15px
-        height: 30px
-    .left
-      justify-content: flex-start
-      +transition()
-      &:hover
-        background: rgba(0, 0, 0, .1)
-        +transition()
-    .right
-      justify-content: flex-end
-      +transition()
-      &:hover
-        background: rgba(0, 0, 0, .1)
-        +transition()
-    .right svg
-      transform: rotate(180deg)
-      order: 2
-    .arrow:hover
-      a
-        text-decoration: none
-      span
-        opacity: 1
-        +transition()
-        visibility: visible
-    .left:hover
-      span
-        transform: translateX(15px)
-    .right:hover
-      span
-        transform: translateX(-15px)
-
-@media handheld, only screen and (max-width: 768px)
-  .arrow span
-    display: none
-@media handheld, only screen and (max-width: 991px)
-  .default
-    header
-      height: 150px
-  .rightbar
-    display: block
-  .leftbar
-    display: none
-  .default, .tags, .search, .posts, .notfound
-    #trigger
-      &:checked + .wrap
-        nav, main, footer, header
-          transform: translateX(-150px)
-        .rightbar
-          transform: translateX(-150px)
-    .rightbar
-      +position(fixed, 0 -150px 0 null)
+#trigger
+	display: none
+	&:checked + paper-header-panel
+		overflow-x: hidden
+		paper-toolbar, main, header, aside, footer, #dropShadow
+			transform: translateX(150px)
+paper-toolbar, main, header, aside, footer, #dropShadow
+	transition-duration: 0.5s
+	transition-timing-function: ease-in-out
+	transition-property: transform
+paper-toolbar
+	background:url(../img/pattern00.png), linear-gradient(to bottom, rgb(82,184,234) 0%, rgb(69,151,225) 100%) no-repeat
+	overflow: hidden
+	.small-2:first-child
+		display: flex
+	h1
+		color: $primary-color
+		font-weight: 400
+		font-size: 20px
+		display: inline-block
+		transform: translateY(-2px)
+	label,  a h1, a
+		align-self: center
+.post
+	paper-toolbar
+		background: url(../img/pattern00.png), rgb(69,151,225)
+		height: calc(64px*2)
+		#topBar
+			height: calc(64px*2)
+		#bottomBar, #middleBar
+			display: none
+		div
+			height: calc(64px*2)
+		.small-4
+			section
+				display: flex
+				width: 100%
+				height: calc(64px*2)
+				.search-input
+					background-color: rgba(49, 116, 176, 1)
+					align-self: center
+					width: 80%
+					border-radius: 0.25em
+					padding: 0.4em 0.8em
+					font-size: 16px
+					height: 45px
+					border: 0
+					color: $primary-color
+					justify-content: center
+					-webkit-user-select: none
+					-moz-user-select: none
+					-ms-user-select: none
+					user-select: none
+					&:hover
+						outline:none
+					&:focus
+						outline:none
+					&:active
+						outline:none
+				.search-input::-webkit-input-placeholder
+					color: $primary-color
+					opacity: .5
+		.small-2
+			a, a span, iron-icon
+				position: relative
+				z-index: 1
+			a
+				display: flex
+				flex: 1
+				color: $primary-color
+				height: calc(64px*2)
+				overflow: hidden
+				align-items: center
+				img
+					opacity: 0.5
+					-webkit-filter: rgb(128,128,128)scale(1) brightness(0.45) contrast(1.05)
+					filter: rgb(128,128,128)scale(1) brightness(0.45) contrast(1.05)
+					position: absolute
+					height: 128px
+					top: 0
+			.left::after
+				content: " "
+				position: absolute
+				top: 0
+				left: 0
+				height: 128px
+				width: 100%
+				background: url(../img/pattern00.png), -webkit-linear-gradient(right, rgba(69,151,225,1) 0%, rgba(69,151,225,1) 50%, rgba(255,255,255,0) 100%)
+				background: url(../img/pattern00.png), -o-linear-gradient(right, rgba(69,151,225,1) 0%, rgba(69,151,225,1) 50%, rgba(255,255,255,0) 100%)
+				background: url(../img/pattern00.png), linear-gradient(to left, rgba(69,151,225,1) 0%, rgba(69,151,225,1) 50%, rgba(255,255,255,0) 100%)
+			.left
+				justify-content: flex-start
+				img
+					left: 0
+			.right::after
+				content: " "
+				position: absolute
+				top: 0
+				left: 0
+				height: 128px
+				width: 100%
+				background: url(../img/pattern00.png), -webkit-linear-gradient(left, rgba(69,151,225,1) 0%, rgba(69,151,225,1) 50%, rgba(255,255,255,0) 100%)
+				background: url(../img/pattern00.png), -o-linear-gradient(left, rgba(69,151,225,1) 0%, rgba(69,151,225,1) 50%, rgba(255,255,255,0) 100%)
+				background: url(../img/pattern00.png), linear-gradient(to right, rgba(69,151,225,1) 0%, rgba(69,151,225,1) 50%, rgba(255,255,255,0) 100%)
+			.right
+				justify-content: flex-end
+				order: 2
+				img
+					right: 0
+			.left, .right
+				+transition()
+				&:hover
+					background: rgba(0,0,0,0.5)
+					+transition()
+.small-10
+	.results
+		.result-body
+			margin-bottom: 7px
+			a
+				color: $primary-color
+@media (max-width: 880px)
+	.small-2
+		a
+			h1
+				display: none
+	.small-2
+		.left, .right
+			&:hover
+				background: rgba(0,0,0,0.1)
+		a
+			img, span
+				display: none
+		a::after
+			display: none
+	.small-4
+		.search-input
+			display: none

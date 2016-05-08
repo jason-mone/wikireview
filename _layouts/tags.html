@@ -1,6 +1,5 @@
 ---
 layout: compress
 ---
- <!DOCTYPE html><html>{% include default-head.html %}<body class="tags"><input type="checkbox" id="trigger"><div class="wrap">{% include default-nav.html %}
-{% include sidebar.html %}<main><div class="container"><div class="row"><div class="col-md-offset-3 col-md-6">{% assign post-id = site.data.posts[page.post-id] %}
-{{content}}</div></div></div></main>{% include default-footer.html %}</div>{% include tags-scripts.html %}</body></html>
+ <!DOCTYPE html><html lang="en">{% include default-head.html %}<body unresolved="" class="tags"><input type="checkbox" id="trigger"><paper-header-panel mode="waterfall-tall"><paper-toolbar class="tall">{% include default-nav.html %}</paper-toolbar>{% include sidebar.html %}<main><div class="row"><div class="small-10 small-centered">{% assign post-id = site.data.posts[page.post-id] %}
+{{content}}</div></div></main></paper-header-panel>{% include tags-scripts.html %}</body></html>

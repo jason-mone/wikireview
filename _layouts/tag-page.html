@@ -1,0 +1,5 @@
+---
+layout: tag
+---
+ 
+{% for post in site.posts %}{% for tag in post.tags %}{% if tag == page.tag %}<div class="small-6-centered medium-6 columns"><a href="{{post.url}}"><paper-card image="/assets/img/{{ post.url | remove:'.html' }}.jpg"><h3>{{post.title}}</h3><time datetime="{{post.date | date: &quot;%Y-%m-%d&quot;}}">{{post.date | date: "%d/%m/%Y"}}</time></paper-card></a></div>{% endif %}{% endfor %}{% endfor %}<paper-button raised="raised"><a href="/tags">view all tags</a></paper-button>

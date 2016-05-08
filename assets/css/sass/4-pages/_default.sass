@@ -1,96 +1,23 @@
-.default
-  header
-    margin-top: 50px
-    display: flex
-    background: url(../img/pattern00.png) center, linear-gradient(to bottom, #b366e1 0%, #9a52ea 100%) no-repeat
-    height: 400px
-    align-items: center
-    .search-input
-      background: #fff none repeat scroll 0% 0%
-      border-radius: 0.25em
-      padding: 0.4em 0.8em
-      font-size: 16px
-      height: 45px
-      border: 0
-      width: 100%
-  article
-    margin: auto
-    a
-      +transition()
-    h5
-      color: $primary-color
-  div img
-    width: 100%
-.tags, .search, .notfound
-  main
-    margin-top: 50px
-.default, .tags, .search, .notfound
-  .wrap
-    display: flex
-    min-height: 100vh
-    flex-direction: column
-  main
-    flex: 1
-  nav
-    height: 50px
-    width: 100%
-    +position(fixed, 0 null null null)
-    z-index: 9999
-    background: url(../img/pattern00.png), linear-gradient(to bottom, $primary-linear-color 0%, $secondary-linear-color 100%) no-repeat
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5)
-    .inner
-      display: flex
-      flex: 1
-      color: #fff
-      height: 50px
-      overflow: hidden
-      justify-content: flex-start
-      text-decoration: none
-      h1
-        transform: translateY(-9px) translateX(8px)
-        +transition()
-        color: rgba(255, 255, 255, 0.85)
-        font-size: 22px
-        align-items: center
-        &:hover
-          color: rgba(255, 255, 255, 1)
-    .arrow-flex, .burger-flex, .right-burger, .slice
-      display: flex
-      justify-content: center
-    .right-burger, .left-burger
-      flex-direction: row
-      align-items: center
-      height: 50px
-    .burger
-      height: 22px
-      min-width: 25px
-    .burger:hover .slice
-      background: rgba(255, 255, 255, 1)
-    .slice
-      width: 95%
-      height: 4px
-      margin: 0 0 4px
-      background: rgba(255, 255, 255, 0.85)
-      +transition()
-  h2
-    color: $primary-color
-  h4
-    color: $primary-color
-  h5
-    color: $primary-color
-  a
-    +transition()
-  section h3
-    color: $primary-color
-  li
-     list-style-type: none
-  footer
-    background: url(../img/pattern00.png) center, linear-gradient(to bottom, #b366e1 0%, #9a52ea 100%) no-repeat
-    color: #fff
-    padding: 15px 0 10px 0
-    a
-      color: #fff
-@media handheld, only screen and (max-width: 991px)
-  .default
-    header
-      height: 150px
+.home
+	article
+		margin: auto
+	paper-card
+		h4
+			transform: translateX(15px)
+		h5
+			transform: translateX(15px)
+			padding-bottom: 15px
+		div img
+			width: 100vw
+.home, .tags, .search, .notfound
+	.arrow-flex, .burger-flex, .right-burger, .slice
+		display: flex
+		justify-content: center
+	.right-burger, .left-burger
+		flex-direction: row
+		align-items: center
+		height: 50px
+	h2, h4, h5
+		color: $primary-text-color
+	li
+		list-style-type: none

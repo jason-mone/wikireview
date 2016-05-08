@@ -1,0 +1,35 @@
+.tags
+	h2
+		span
+			transform: translate(-16px, -2px)
+			display: inline-block
+			color: $primary-color
+			font-size: 14px
+	a
+		color: $primary-text-color
+		line-height: 25px
+		iron-icon
+			transform: translate(-5px, 3px)
+			width: 15px
+	hr
+		width: 100%
+	.label:nth-child(odd)
+		background: rgba(0, 0, 0, 0.1)
+		background-size: cover
+.tag
+	a, ul
+		color: $primary-text-color
+	a
+		width: 100%
+		paper-card
+			iron-image
+			margin: 9px 0px 9px 0px
+			h3
+				color: $primary-text-color
+			h3, time
+				display: block
+				transform: translateX(20px)
+	paper-button
+		background-color: $primary-text-color
+		a
+			color: $primary-color

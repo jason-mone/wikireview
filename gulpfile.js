@@ -1,28 +1,42 @@
 var gulp = require('gulp');
 var browserSync = require('browser-sync');
+var uglify = require('gulp-uglify');
 var sass = require('gulp-sass');
+var cssshrink = require('gulp-cssshrink');
 var autoprefixer = require('gulp-autoprefixer');
 var cp = require('child_process');
 var jade  = require('gulp-jade');
-var uglify = require('gulp-uglify');
 var shorthand = require('gulp-shorthand');
 var messages = {
     jekyllBuild: '<span style="color: grey">Running:</span> $ jekyll build'
 };
 var ghPages = require('gulp-gh-pages');
-
-// gh-pages
+const imagemin = require('gulp-imagemin');
+gulp.task('imagemin', () => {
+	return gulp.src('assets/img/*')
+		.pipe(imagemin({
+			progressive: true,
+			svgoPlugins: [{removeViewBox: false}]
+		}))
+		.pipe(gulp.dest('assets/img/'));
+});
+// deploy to gh-pages
 gulp.task('deploy', function() {
-  return gulp.src('_site')
+  return gulp.src(['_site/*/**/', '_site/*/'])
     .pipe(ghPages());
+});
+// cssshrink
+gulp.task('cssshrink', function() {
+    gulp.src('assets/css/*.css')
+        .pipe(cssshrink())
+        .pipe(gulp.dest('_site/assets/css/'));
 });
 //uglify
 gulp.task('uglify', function(){
-return gulp.src('assets/js/*.js')
+return gulp.src(['_site/assets/js/*.js', '_site/bower_components/webcomponentsjs/*.js'])
 .pipe(uglify())
-.pipe(gulp.dest('assets/js/'))
+.pipe(gulp.dest(['_site/assets/js/', '_site/bower_components/webcomponentsjs/']))
 });
-
 //jade
 gulp.task('jade', function(){
   return gulp.src(['_jade/*.jade', '_jade/*/*.jade'] )
@@ -37,13 +51,13 @@ gulp.task('jadeignore', function(){
 // Build the Jekyll Site
 gulp.task('jekyll-build', function (done) {
     browserSync.notify(messages.jekyllBuild);
-    return cp.spawn('jekyll', ['build'], {stdio: 'inherit'})
+    return cp.spawn( 'jekyll' , ['build'], {stdio: 'inherit'})
         .on('close', done);
 });
 
 //Rebuild Jekyll & do page reload
 
-gulp.task('jekyll-rebuild', ['jekyll-build'], function () {
+gulp.task('jekyll-rebuild', ['jekyll-build'], function() {
     browserSync.reload();
 });
 
@@ -75,12 +89,12 @@ gulp.task('sass', function () {
 gulp.task('watch', function () {
     gulp.watch('assets/css/**', ['sass']);
     gulp.watch(['_jade/**','_jade/*/*.html'], ['jade', 'jadeignore']);
-    gulp.watch(['*.html', '_layouts/*', '_posts/*', '_config.yml', 'assets/js/*', 'assets/img/*', 'sitemap.xml','_data/*'], ['jekyll-rebuild']);
+    gulp.watch(['*.html', '_layouts/*', '_posts/*', '_config.yml', 'assets/js/*.js', 'assets/img/*', 'sitemap.xml','_data/*'], ['jekyll-rebuild']);
 });
 
 /**
  * Default task, running just `gulp` will compile the sass,
  * compile the jekyll site, launch BrowserSync & watch files.
  */
-gulp.task('serve', ['browser-sync', 'watch']);
-gulp.task('default', ['sass', 'uglify', 'jade', 'jadeignore']);
+gulp.task('serve', ['watch']);
+gulp.task('default', ['sass', 'jade', 'jadeignore','cssshrink', 'jekyll-rebuild', 'uglify']);

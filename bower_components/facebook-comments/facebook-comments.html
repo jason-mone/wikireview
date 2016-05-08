@@ -1,0 +1,190 @@
+<!--
+	@license
+	Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+	This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+	The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+	The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+	Code distributed by Google as part of the polymer project is also
+	subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+A Polymer Component for displaying Facebook comments.
+
+##### Example
+
+	<facebook-comments></facebook-comments>
+
+@element facebook-comments
+@blurb A Polymer Component for displaying Facebook comments.
+@homepage http://kunalnagar.github.io/facebook-comments
+-->
+<polymer-element name="facebook-comments" attributes="type appid colorscheme pageurl mobile numposts orderby width">
+	<template>
+		<div id="fbcommentshtml5">
+			<!-- HTML5 -->
+			<div
+				class="fb-comments"
+				data-colorscheme="{{ colorscheme }}"
+				data-href="{{ pageurl }}"
+				data-mobile="{{ mobile }}"
+				data-num-posts="{{ numposts }}"
+				data-order-by="{{ orderby }}"
+				data-width="{{ width }}"
+			></div>
+		</div>
+		<div id="fbcommentsxfbml">
+			<!-- XFBML -->
+			<fb:comments
+				colorscheme="{{ colorscheme }}"
+				href="{{ pageurl }}"
+				mobile="{{ mobile }}"
+				numposts="{{ numposts }}"
+				orderby="{{ orderby }}"
+				width="{{ width }}"
+			></fb:comments>
+		</div>
+		<style>
+			#fbcommentshtml5,
+			#fbcommentsxfbml,
+			.fb-comments {
+				height: 100%;
+			}
+			#fbcommentshtml5 iframe,
+			#fbcommentsxfbml iframe {
+				min-height: 100% !important;
+			}
+		</style>
+	</template>
+	<script>
+	Polymer({
+		/**
+		 * Type of Facebook Comments
+		 *
+		 * Values: `html5` | `xfbml`
+		 *
+		 * @attribute type
+		 * @type string
+		 * @default xfbml
+		 */
+		type: 'xfbml',
+
+		/**
+		 * Facebook APP ID
+		 *
+		 * @attribute appid
+		 * @type string
+		 */
+		appid: '266086456917866',
+
+		/**
+		 * The color scheme used by the plugin.
+		 *
+		 * Values: `light` | `dark`
+		 *
+		 * @attribute colorscheme
+		 * @type string
+		 * @default light
+		 */
+		colorscheme: 'light',
+
+		/**
+		 * The absolute URL that comments posted in the plugin will be permanently associated with.
+		 *
+		 * Stories on Facebook about comments posted in the plugin will link to this URL.
+		 *
+		 * @attribute pageurl
+		 * @type string
+		 */
+		pageurl: 'http://developers.facebook.com/docs/plugins/comments/',
+
+		/**
+		 * A boolean value that specifies whether to show the mobile-optimized version or not.
+		 *
+		 * Values: `true` | `false`
+		 *
+		 * Note: Value is auto-detected.
+		 *
+		 * @attribute mobile
+		 * @type bool
+		 * @default false
+		 */
+		mobile: 'false',
+
+		/**
+		 * The number of comments to show by default.
+		 *
+		 * The minimum value is 1.
+		 *
+		 * @attribute numposts
+		 * @type int
+		 * @default 5
+		 */
+		numposts: '5',
+
+		/**
+		 * The order to use when displaying comments.
+		 *
+		 * Values: `social` | `reverse_time` | `time`
+		 *
+		 * @attribute orderby
+		 * @type string
+		 * @default social
+		 */
+		orderby: 'social',
+
+		/**
+		 * The width of the plugin.
+		 *
+		 * @attribute width
+		 * @type int
+		 * @default 100
+		 */
+		width: '550',
+
+		renderFacebookComments: function() {
+			(function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) return;
+				js = d.createElement(s); js.id = id;
+				js.src = "//connect.facebook.net/en_US/sdk.js";
+				fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+			switch (this.type) {
+				case 'xfbml':
+					console.log('xfbml');
+					var container = this.$.fbcommentsxfbml,
+						that = this;
+					window.fbAsyncInit = function() {
+						FB.init({
+							appId: that.appid,
+							xfbml: true,
+							version: 'v2.1'
+						});
+						FB.XFBML.parse(container);
+					}
+					container.style.height = '400px';
+					break;
+				case 'html5':
+					console.log('html5');
+					var container = this.$.fbcommentshtml5,
+						that = this;
+					window.fbAsyncInit = function() {
+						FB.init({
+							appId: that.appid,
+							xfbml: true,
+							version: 'v2.1'
+						});
+						FB.XFBML.parse(container);
+					}
+					container.style.height = '400px';
+					break;
+			}
+		},
+		ready: function() {
+			this.async(this.renderFacebookComments, null, 1000);
+		}
+	});
+	</script>
+</polymer-element>

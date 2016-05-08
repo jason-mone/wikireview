@@ -1,0 +1,31 @@
+aside
+	width: 150px
+	background: #377EBF url(../img/pattern00.png)
+	+position(fixed, 0 null 0 -150px)
+	ul
+		list-style-type: none
+		padding: 0
+	li
+		list-style-type: none
+		padding: 0
+		&:first-child
+			margin-top: 16px
+	a
+		color: #fff
+		font-size: 20px
+		display: block
+		padding-left: 20px
+		font-weight: 400
+		&:hover
+			text-decoration: none
+			color: #49ace5
+		&:visited
+			color: $primary-color
+	h1
+		font-size: 20px
+		font-weight: 400
+		align-items: center
+		+transition()
+		color: #fff
+		&:hover
+			color: #49ace5
