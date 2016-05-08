@@ -1,4 +1,4 @@
 # robotstxt.org
-Sitemap: https://tech.wikireview.com/sitemap.xml
+Sitemap: https://wikireview.tech/sitemap.xml
 User-Agent: *
 Disallow: /page*/

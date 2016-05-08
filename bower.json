@@ -1,0 +1,33 @@
+{
+  "name": "wikiReview",
+  "description": "",
+  "main": "",
+  "authors": [
+    "no"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/json-mone/wikireview",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "iron-pages": "PolymerElements/iron-pages#^1.0.7",
+    "page": "page.js#^1.7.1",
+    "paper-scroll-header-panel": "PolymerElements/paper-scroll-header-panel#^1.0.15",
+    "paper-header-panel": "PolymerElements/paper-header-panel#^1.1.5",
+    "paper-card": "PolymerElements/paper-card#^1.1.1",
+    "event-infinite-scroll": "^1.1.1",
+    "platinum-sw": "PolymerElements/platinum-sw#^1.3.0",
+    "iron-icon": "PolymerElements/iron-icon#^1.0.8",
+    "facebook-comments": "^1.0.1",
+    "paper-toolbar": "PolymerElements/paper-toolbar#^1.1.4",
+    "iron-icons": "PolymerElements/iron-icons#^1.1.3",
+    "paper-button": "PolymerElements/paper-button#^1.0.11"
+  }
+}
